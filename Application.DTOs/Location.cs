@@ -1,8 +1,7 @@
-﻿namespace Application.DTOs
+﻿namespace Application.DTOs;
+
+public class Location
 {
-    public class Location
-    {
-        public int LocationId { get; set; }
-        public string LocationName { get; set; }
-    }
+    public int LocationId { get; set; }
+    public string? LocationName { get; set; }
 }

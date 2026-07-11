@@ -1,19 +1,10 @@
-﻿namespace SerializersBenchmark
-{
-    using BenchmarkDotNet.Running;
+﻿using BenchmarkDotNet.Running;
+using SerializersBenchmark;
 
-    using System;
+// Раскомментируйте нужный бенчмарк для запуска:
+// BenchmarkRunner.Run<Lists>();
+// BenchmarkRunner.Run<Dictionaries>();
+BenchmarkRunner.Run<Arrays>();
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            //BenchmarkRunner.Run<Lists>();
-            //BenchmarkRunner.Run<Dictionaries>();
-            BenchmarkRunner.Run<Arrays>();
-
-            Console.WriteLine("done!");
-            Console.ReadLine();
-        }
-    }
-}
+Console.WriteLine("done!");
+Console.ReadLine();

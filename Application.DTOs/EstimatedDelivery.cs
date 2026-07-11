@@ -1,9 +1,8 @@
-﻿namespace Application.DTOs
+﻿namespace Application.DTOs;
+
+public class EstimatedDelivery
 {
-    public class EstimatedDelivery
-    {
-        public int EstimatedDays { get; set; }
-        public int MinimumDays { get; set; }
-        public int MaximumDays { get; set; }
-    }
+    public int EstimatedDays { get; set; }
+    public int MinimumDays { get; set; }
+    public int MaximumDays { get; set; }
 }

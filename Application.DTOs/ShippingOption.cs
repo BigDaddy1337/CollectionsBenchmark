@@ -1,9 +1,8 @@
-﻿namespace Application.DTOs
+﻿namespace Application.DTOs;
+
+public class ShippingOption
 {
-    public class ShippingOption
-    {
-        public int ShippingOptionId { get; set; }
-        public DeliveryType DeliveryType { get; set; }
-        public EstimatedDelivery EstimatedDelivery { get; set; }
-    }
+    public int ShippingOptionId { get; set; }
+    public DeliveryType DeliveryType { get; set; }
+    public EstimatedDelivery? EstimatedDelivery { get; set; }
 }

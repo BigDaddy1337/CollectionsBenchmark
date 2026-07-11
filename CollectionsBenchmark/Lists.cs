@@ -1,70 +1,66 @@
-﻿namespace SerializersBenchmark
+﻿using Application.DTOs;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
+
+namespace SerializersBenchmark;
+
+[RankColumn]
+[Orderer(SummaryOrderPolicy.FastestToSlowest, MethodOrderPolicy.Declared)]
+[MemoryDiagnoser]
+public class Lists
 {
-    using System.Collections.Generic;
-
-    using Application.DTOs;
-
-    using BenchmarkDotNet.Attributes;
-    using BenchmarkDotNet.Order;
-
-    [RankColumn]
-    [Orderer(SummaryOrderPolicy.FastestToSlowest, MethodOrderPolicy.Declared)]
-    [MemoryDiagnoser]
-    public class Lists
+    [Benchmark(Baseline = true)]
+    public void Small_List_DynamicCapacity()
     {
-        [Benchmark(Baseline = true)]
-        public void Small_List_DynamicCapacity()
+        const int size = 100;
+        List<Merchant> list = new();
+        for (int i = 0; i < size; i++)
         {
-            int size = 100;
-            var list = new List<Merchant>();
-            for (int i = 0; i < size; i++)
-            {
-                list.Add(new Merchant { MerchantId = i });
-            }
+            list.Add(new Merchant { MerchantId = i });
         }
+    }
 
-        [Benchmark]
-        public void Small_List_PlannedCapacity()
+    [Benchmark]
+    public void Small_List_PlannedCapacity()
+    {
+        const int size = 100;
+        List<Merchant> list = new(size);
+        for (int i = 0; i < size; i++)
         {
-            int size = 100;
-            var list = new List<Merchant>(size);
-            for (int i = 0; i < size; i++)
-            {
-                list.Add(new Merchant { MerchantId = i });
-            }
+            list.Add(new Merchant { MerchantId = i });
         }
+    }
 
-        [Benchmark]
-        public void Large_List_DynamicCapacity()
+    [Benchmark]
+    public void Large_List_DynamicCapacity()
+    {
+        const int size = 5000;
+        List<Merchant> list = new();
+        for (int i = 0; i < size; i++)
         {
-            int size = 5000;
-            var list = new List<Merchant>();
-            for (int i = 0; i < size; i++)
-            {
-                list.Add(new Merchant { MerchantId = i });
-            }
+            list.Add(new Merchant { MerchantId = i });
         }
+    }
 
-        [Benchmark]
-        public void Large_List_PlannedCapacity()
+    [Benchmark]
+    public void Large_List_PlannedCapacity()
+    {
+        const int size = 5000;
+        List<Merchant> list = new(size);
+        for (int i = 0; i < size; i++)
         {
-            int size = 5000;
-            var list = new List<Merchant>(size);
-            for (int i = 0; i < size; i++)
-            {
-                list.Add(new Merchant { MerchantId = i });
-            }
+            list.Add(new Merchant { MerchantId = i });
         }
+    }
 
-        [Benchmark]
-        public void Large_List_BelowPlannedCapacity()
+    [Benchmark]
+    public void Large_List_BelowPlannedCapacity()
+    {
+        const int size = 100;
+        List<Merchant> list = new(size);
+        for (int i = 0; i < 5000; i++)
         {
-            int size = 100;
-            var list = new List<Merchant>(size);
-            for (int i = 0; i < 5000; i++)
-            {
-                list.Add(new Merchant { MerchantId = i });
-            }
+            list.Add(new Merchant { MerchantId = i });
         }
     }
 }
